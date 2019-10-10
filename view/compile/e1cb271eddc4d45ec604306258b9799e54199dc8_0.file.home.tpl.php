@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2019-10-09 23:46:41
+/* Smarty version 3.1.33, created on 2019-10-10 13:45:06
   from 'C:\wamp64\www\loja\view\home.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_5d9e71618cb794_62822505',
+  'unifunc' => 'content_5d9f35e2bb6805_84803028',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'e1cb271eddc4d45ec604306258b9799e54199dc8' => 
     array (
       0 => 'C:\\wamp64\\www\\loja\\view\\home.tpl',
-      1 => 1570664797,
+      1 => 1570664814,
       2 => 'file',
     ),
   ),
@@ -20,15 +20,9 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5d9e71618cb794_62822505 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5d9f35e2bb6805_84803028 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!--INÍCIO DO CAROSEL-->
 <center>
-	<?php echo '<script'; ?>
->
-  $("#slideshow").craftyslide();
-  src="js/craftyslide.js"
-<?php echo '</script'; ?>
->
 
 <div class="conteiner">
 	<div id="lojaCarousel" class="carousel slid" data-ride="carousel">

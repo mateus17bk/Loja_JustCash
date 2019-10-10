@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2019-10-08 18:08:31
+/* Smarty version 3.1.33, created on 2019-10-10 14:16:33
   from 'C:\wamp64\www\loja\view\index.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_5d9cd09f593408_80891074',
+  'unifunc' => 'content_5d9f3d415f0f38_48636316',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'df340bbdbc059a6320ce8bffa25a5619d716d6dc' => 
     array (
       0 => 'C:\\wamp64\\www\\loja\\view\\index.tpl',
-      1 => 1570558005,
+      1 => 1570716768,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5d9cd09f593408_80891074 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5d9f3d415f0f38_48636316 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 
 <html>
@@ -62,7 +62,6 @@ function content_5d9cd09f593408_80891074 (Smarty_Internal_Template $_smarty_tpl)
     
     </head>
     
-
     <body>
         
         <!-- começa  o container geral -->
@@ -72,12 +71,26 @@ function content_5d9cd09f593408_80891074 (Smarty_Internal_Template $_smarty_tpl)
             <div class="row" id="topo">
                 
                 <div class="container">
-                <center>
-                <img src="<?php echo $_smarty_tpl->tpl_vars['GET_TEMA']->value;?>
+                    <div class="col-md-12">
+                        <center>
+                            <img src="<?php echo $_smarty_tpl->tpl_vars['GET_TEMA']->value;?>
 /images/logo-arte" width="330" height="150" alt=""> 
-                </center>
-                </div>    
+                        </center>
+                    </div>
             
+                        <div class="col-md-12 text-right">       
+                             <?php if ($_smarty_tpl->tpl_vars['LOGADO']->value == true) {?>
+                             Olá: <?php echo $_smarty_tpl->tpl_vars['USER']->value;?>
+ 
+                             <a href="<?php echo $_smarty_tpl->tpl_vars['PAG_LOGOFF']->value;?>
+" class="btn btn-danger">
+                                 <i class="glyphicon glyphicon-log-out"></i> Sair </a> 
+                             <?php }?>
+                    
+                        </div>
+
+                </div>     
+
             </div><!-- fim da div topo -->
             
             <!-- começa a barra MENU-->

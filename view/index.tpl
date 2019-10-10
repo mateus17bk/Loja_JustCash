@@ -22,7 +22,6 @@
     
     </head>
     
-
     <body>
         
         <!-- começa  o container geral -->
@@ -32,11 +31,23 @@
             <div class="row" id="topo">
                 
                 <div class="container">
-                <center>
-                <img src="{$GET_TEMA}/images/logo-arte" width="330" height="150" alt=""> 
-                </center>
-                </div>    
+                    <div class="col-md-12">
+                        <center>
+                            <img src="{$GET_TEMA}/images/logo-arte" width="330" height="150" alt=""> 
+                        </center>
+                    </div>
             
+                        <div class="col-md-12 text-right">       
+                             {if $LOGADO == true}
+                             Olá: {$USER} 
+                             <a href="{$PAG_LOGOFF}" class="btn btn-danger">
+                                 <i class="glyphicon glyphicon-log-out"></i> Sair </a> 
+                             {/if}
+                    
+                        </div>
+
+                </div>     
+
             </div><!-- fim da div topo -->
             
             <!-- começa a barra MENU-->

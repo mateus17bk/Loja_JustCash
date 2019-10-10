@@ -45,6 +45,10 @@ Class Rotas{
 		return  self::get_SiteHOME(). '/minhaconta';
 	}
 
+	static function pag_ClienteConta(){
+		return  self::get_SiteHOME(). '/minhaconta';
+	}
+
 
 	static function pag_PedidoConfirmar(){
 		return  self::get_SiteHOME(). '/pedido_confirmar';

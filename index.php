@@ -28,6 +28,12 @@ $smarty->assign('PAG_MINHACONTA', Rotas::pag_MinhaConta());
 $smarty->assign('TITULO_SITE', Config::SITE_NOME);
 $smarty->assign('CATEGORIAS',$categorias->GetItens());
 $smarty->assign('DATA', Sistema::DataAtualBR());
+$smarty->assign('PAG_LOGOFF', Rotas::pag_Logoff());
+$smarty->assign('LOGADO', Login::Logado());
+
+if(Login::Logado()){
+	$smarty->assign('USER', $_SESSION['CLI']['cli_nome']);
+}
 
 
 

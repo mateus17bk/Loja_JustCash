@@ -16,6 +16,7 @@ $smarty->assign('USER', '');
 if(Login::Logado()){
 	$smarty->assign('USER', $_SESSION['CLI']['cli_nome']);
 	$smarty->assign('PAG_LOGOFF', Rotas::pag_Logoff());
+	Login::MenuCliente();
 }
 
 
