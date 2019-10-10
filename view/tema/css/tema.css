@@ -1,0 +1,141 @@
+/*
+
+*/
+@media (min-width: 2400px){
+  .container {
+    width: 1920px;
+
+  }
+}
+#topo{
+
+min-height: 100px;
+background: linear-gradient(to bottom left, #000000 -15%, #ffffff 160%);
+color: #fff;
+    
+}
+
+#cor{
+  color:#000000;
+}
+
+#rodape{
+     
+min-height: 150px;
+background: linear-gradient(to bottom, #000000 -48%, #ffffff 150%);
+color: #fff; 
+padding-top:30px;
+    
+}
+
+section{
+ margin: 5px auto;
+ /*width: 1500px;*/
+ /*height: 100px;*/
+}
+
+.icone{
+ width: 50px;
+ height: 50px;
+ float: left;
+
+}
+
+.rede:hover{
+ cursor: pointer;
+ transform: translateY(-20px);
+ box-shadow: 4px 20px 15px 9px rgba(91,91,91, 0.45);
+}
+
+.rede{
+ width: 50px;
+ height: 50px;
+ text-align: center; 
+ /*float: left;*/
+ margin-left: 20px;
+ transition: all 0.4s ease-out;
+ border-radius: 50%;
+}
+
+.rede#instagram{
+ background-color: #ffff;
+}
+
+#conteudo{
+    
+   min-height: 450px; 
+}
+
+#lateral{
+    
+   border-right: 1px solid #adadad;
+   height: 100%;
+
+  }
+
+  .transparente{
+   opacity: 0.9;   
+      
+  }
+
+
+/* CLASSES OVERRIDE DO BOOTSTRAP para personalização*/
+
+/* navbar e menu navbar */
+.navbar-inverse{
+    border-radius: 10;
+    
+}
+
+
+.navbar-inverse .navbar-nav > li > a{
+    
+  color: #fff;
+  font-size: 16px;  
+    
+}
+.navbar-inverse .navbar-nav > li > a:hover{
+    
+ background-color: #000;
+ border-radius: 10px;
+ color: #eb9316;
+    
+}
+
+/* menu lateral com list group*/
+
+.list-group-item.active, .list-group-item.active:focus, .list-group-item.active:hover{
+    
+   background-color: #101010; 
+    
+}
+
+a.list-group-item:hover{
+    
+    background-color: #262626;;
+     color: #FFF;
+     
+    
+}
+
+a.list-group-item{
+  
+    border: 0;
+    font-size: 16px;
+    
+    
+}
+
+.thumbnail{
+  border-radius: 15px;
+  box-shadow: 6px 6px 10px #adadad;
+
+
+}
+
+.pagination>li>a{
+  background-color: #2E2E2E; 
+  color:#fff ;
+}
+
+  

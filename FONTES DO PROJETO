@@ -1,0 +1,218 @@
+HTACCESS PARA URL AMIGÁVEL
+
+<IfModule mod_rewrite.c> 
+RewriteEngine on 
+RewriteCond %{REQUEST_FILENAME} !-f 
+RewriteCond %{REQUEST_FILENAME} !-d 
+
+RewriteRule ^(.*)$ index.php?pag=$1 [L,QSA] 
+</IfModule> 
+
+<Files *.tpl> 
+    Order deny,allow 
+    Deny from All 
+</Files>
+
+
+
+//FUNCAO MAIL
+
+<?php
+
+$to      = Config::EMAIL_USER;
+$subject = 'Contato - Loja Freitas';
+$message = 'Email de '.$_GET['txtinputnome']. "\r\n" .$_GET['txtinputarea'];
+$dest = $_GET['txtinputemail'];
+
+$headers = "From: " .$dest;
+
+mail($to, $subject, $message, $headers);
+?>
+
+<script>alert('Email enviado com Sucesso!')</script>
+<meta http-equiv="refresh" content="0; url=contato">
+
+
+
+
+ 		 'pro_nome'  => $lista['pro_nome'] ,  
+         'pro_desc'  => $lista['pro_desc'] ,  
+         'pro_peso'  => $lista['pro_peso'] ,  
+         'pro_valor'   => $lista['pro_valor']  ,  
+         'pro_altura' => $lista['pro_altura'] ,  
+         'pro_largura' => $lista['pro_largura'] ,  
+         'pro_comprimento' => $lista['pro_comprimento'] ,  
+         'pro_img'     => $lista['pro_img'] ,  
+         'pro_slug' => $lista['pro_slug'], 
+         'cate_nome' => $lista['cate_nome'] , 
+         'cate_id'   => $lista['cate_id']   
+
+
+
+
+
+//html da pagina produtos
+
+<h3>Lista de produtos</h3>
+<hr>
+
+ 
+    <section id="pagincao" class="row">
+       <center>
+          PAGINAS
+       </center>
+    </section>
+  
+       
+    <!--  começa lista de produtos  ---->   
+  <section id="produtos" class="row">  
+ 
+<ul style="list-style: none" >
+    
+    
+  
+                  <div class="row" id="pularliha">
+             
+           
+        <li class="col-md-4">
+
+            <div class="thumbnail">
+
+                <a href="">
+
+
+                    <img src="" alt="" > 
+
+                    <div class="caption">
+
+                        <h4 class="text-center"> NOME PROD</h4> 
+
+                        <h3 class="text-center text-danger">VALOR</h3>
+
+                    </div>
+
+                </a>
+
+            </div>
+
+
+        </li>
+        
+         </div>
+         
+    
+</ul>
+    
+    </section>
+    
+    
+     <!--  paginação inferior   -->  
+    <section id="pagincao" class="row">
+    <center>
+    PAGINAS
+    </center>
+    </section>
+
+
+
+
+
+
+
+
+   // PRODUTOS INFO PAGINA
+
+
+     {foreach from=$PRO item=P}
+
+      <h3 class="text-center">{$P.pro_nome}</h3>
+<hr>
+
+<div class="row">
+    
+  
+    {*  div da esquerda imagem do produto  *}
+    <div class="col-md-6 ">
+
+        <img class="thumbnail" src="{$P.pro_img}" alt="" > 
+
+    </div>
+
+   
+	{*    div da direita info produtos    *}
+    <div class="col-md-6 thumbnail">
+        
+          <img src="{$TEMA}/images/logo-pagseguro.png" alt="">
+  <hr>
+            
+        
+        <div class="col-md-6">
+           <h3 class="text-center preco">R$ {$P.pro_valor}</h3>   
+            
+        </div>
+      
+        <div class="col-md-6">
+            <form name="carrinho" method="post" action="">
+                <input type="hidden" name="pro_id" value="{$P.pro_id}">
+                <input type="hidden" name="acao" value="add">
+            <button  class="btn btn-geral btn-lg">Comprar</button>
+             </form> 
+            
+        </div>
+           
+         
+      
+
+     
+        
+    
+
+    </div>
+
+
+
+
+</div>
+        <!-- -->
+         {*  listagem de imagens extras  *}
+        <div class="row">
+            <hr>
+              <h4 class="text-center">Mais imagens</h4>
+
+              <ul style="list-style: none">
+                 
+
+                      <li class="col-md-3 ">
+                          <img src="" alt="" class="thumbnail">
+
+
+                      </li>
+
+                 
+              </ul>
+              
+
+        </div>
+            {*    <!-- descrição do produto-->  *}
+      
+        <div class="row">
+            <hr>
+            <h4 class="text-center">Descrição do produto</h4>
+
+            {$P.pro_desc} 
+
+        </div>  
+            <br>
+            <br>
+
+
+  {/foreach}
+
+
+
+
+
+
+
+
+

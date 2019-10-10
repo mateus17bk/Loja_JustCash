@@ -1,0 +1,1 @@
+c:\wamp64\bin\php\php7.3.1\php.exe composer.phar update
