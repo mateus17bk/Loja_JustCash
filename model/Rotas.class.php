@@ -21,6 +21,10 @@ Class Rotas{
 		return  self::get_SiteHOME(). '/carrinho';
 	}
 
+	static function pag_ClienteLogin(){
+		return  self::get_SiteHOME(). '/login';
+	}
+
 	static function pag_Logoff(){
 		return  self::get_SiteHOME(). '/logoff';
 	}

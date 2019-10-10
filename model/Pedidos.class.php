@@ -24,18 +24,26 @@ Class Pedidos extends Conexao{
 
 
      	 $this->ExecuteSQL($query, $params);
-     	 echo $query;
-     	 
+
      	 //Gravar os itens dos pedidos
-     	 //$this->ItensGravar($cod);
+     	 $this->ItensGravar($cod);
      	 $retorno = TRUE;
      	 return $retorno;
 
 	}
 
 
+    function GetPedidosCliente($cliente=null){
+        $query = "SELECT * FROM pedidos p INNER JOIN {$this->prefix}clientes c";
+        $query .= " ON p.ped_cliente = c.cli_id";
+        if($cliente != null){
+            $cli = (int)$cliente;
+            $query .= " WHERE ped_cliente = {$cli}";
+        }
+    }
+
 	//Codigo do pedido 
-	function IntensGravar($codpedido){
+	function ItensGravar($codpedido){
 		$carrinho = new Carrinho();
 		foreach ($carrinho->GetCarrinho() as $item) {
 			$query  = "INSERT INTO ".$this->prefix."pedidos_itens ";
@@ -50,7 +58,7 @@ Class Pedidos extends Conexao{
                 );
 			
 			$this->ExecuteSQL($query, $params);
-			echo $query;
+			
 
 		}
 

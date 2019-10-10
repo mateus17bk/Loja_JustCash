@@ -1,7 +1,5 @@
 <?php 
 
-echo $_SESSION['pedido'];
-
 if(isset($_SESSION['PRO'])){
 
 	$smarty = new Template();

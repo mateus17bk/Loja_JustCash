@@ -53,13 +53,18 @@ Class Login extends Conexao{
 	}
 
 
-		static function Logado(){
-			if(isset($_SESSION['CLI']['cli_email']) && isset($_SESSION['CLI']['cli_id'])){
-				return TRUE;
-			}else{
-				return FALSE;
-			}
+
+	static function AcessoNegado(){
+		echo '<div class="alert alert-danger"><a href="'.Rotas::pag_ClienteLogin().'" class="btn btn-danger">Login </a> Acesso Negado, faca Login </div>';
+	}
+
+	static function Logado(){
+		if(isset($_SESSION['CLI']['cli_email']) && isset($_SESSION['CLI']['cli_id'])){
+			return TRUE;
+		}else{
+			return FALSE;
 		}
+	}
 
 
 
@@ -77,7 +82,7 @@ Class Login extends Conexao{
      // verifo se não esta logado 
     	if(!self::Logado()):
 			
-			//self::AcessoNegado();
+			self::AcessoNegado();
             Rotas::Redirecionar(2, Rotas::pag_ClienteLogin());                  
             // caso nao redirecione  saiu  do bloco
             exit();                

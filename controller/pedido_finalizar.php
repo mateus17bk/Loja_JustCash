@@ -1,32 +1,47 @@
 <?php 
 
-if(isset($_SESSION['PRO'])){
+//Não está logado
+if(!Login::Logado()){
+	//Cai para acesso negado
+	Login::AcessoNegado();
+	//Apresenta a pagina para acessa a conta do cliente
+	Rotas::Redirecionar(2, Rotas::pag_ClienteLogin());
 
-	$smarty = new Template();
+}else{
 
-	$carrinho = new Carrinho();
+	if(isset($_SESSION['PRO'])){
+
+		$smarty = new Template();
+
+		$carrinho = new Carrinho();
 
 
 	$smarty->assign('PRO', $carrinho->GetCarrinho());
 	$smarty->assign('TOTAL', Sistema::MoedaBR($carrinho->GetTotal()));
 	$smarty->assign('TEMA', Rotas::get_SiteTEMA());
 	
-	$pedido = new Pedidos();
-	$cliente = 1;
-	$cod = $_SESSION['pedido'];
-	$ref = '4655524ref';
+		$pedido = new Pedidos();
+		$cliente = 1;
+		$cod = $_SESSION['pedido'];
+		$ref = '4655524ref';
 
-	if($pedido->PedidoGravar($cliente, $cod, $ref)){
-		$pedido->LimparSessoes();
-	}
+			if($pedido->PedidoGravar($cliente, $cod, $ref)){
+			$pedido->LimparSessoes();
+		}
 
 	$smarty->display('pedido_finalizar.tpl');
 
 
-}else{
-	echo '<h4 class="alert alert-danger">Não possuir produtos no carrinho! </h4>';
+	}else{
+		echo '<h4 class="alert alert-danger">Não possuir produtos no carrinho! </h4>';
 		Rotas::Redirecionar(3, Rotas::pag_Produtos());
+	}
+
+
 }
+
+
+
 
 
  ?>
