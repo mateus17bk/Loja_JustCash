@@ -44,6 +44,7 @@ Class Login extends Conexao{
              $_SESSION['CLI']['cli_data_cad'] = $lista['cli_data_cad'];
              $_SESSION['CLI']['cli_pass'] = $lista['cli_pass']; 
 
+             Rotas::Redirecionar(0, Rotas::pag_ClienteLogin());
              
 		}else{
 			
@@ -94,9 +95,9 @@ Class Login extends Conexao{
         $smarty->assign('PAG_CONTA', Rotas::pag_ClienteConta());
         $smarty->assign('PAG_CARRINHO', Rotas::pag_Carrinho());
         $smarty->assign('PAG_LOGOFF', Rotas::pag_Logoff());
-        /*$smarty->assign('PAG_CLIENTE_PEDIDOS', Rotas::pag_CLientePedidos());
-        $smarty->assign('PAG_CLIENTE_DADOS', Rotas::pag_CLienteDados());
-        $smarty->assign('PAG_CLIENTE_SENHA', Rotas::pag_CLienteSenha());*/
+        $smarty->assign('PAG_CLIENTE_PEDIDOS', Rotas::pag_ClientePedidos());
+        $smarty->assign('PAG_CLIENTE_DADOS', Rotas::pag_ClienteDados());
+        $smarty->assign('PAG_CLIENTE_SENHA', Rotas::pag_ClienteSenha());
         $smarty->assign('USER', $_SESSION['CLI']['cli_nome']);
         
         $smarty->display('menu_cliente.tpl');

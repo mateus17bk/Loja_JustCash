@@ -4,9 +4,13 @@ if(!isset($_SESSION)){
 	session_start();
 }
 
-if(!isset($_SESSION['pedido'])){
+/*if(!isset($_SESSION['PED']['pedido'])){
 	$_SESSION['pedido'] = date('YmdHms');
 }
+
+if(!isset($_SESSION['PED']['ref'])){
+	$_SESSION['ref'] = date('YmdHms');
+}*/
 
 require './lib/autoload.php';
 

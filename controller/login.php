@@ -21,6 +21,8 @@ if(Login::Logado()){
 
 
 $smarty->assign('LOGADO', Login::Logado());
+$smarty->assign('PAG_CADASTRO', Rotas::pag_ClienteCadastro());
+$smarty->assign('PAG_RECOVERY', Rotas::pag_ClienteRecovery());
 
 $smarty->display('login.tpl');
 

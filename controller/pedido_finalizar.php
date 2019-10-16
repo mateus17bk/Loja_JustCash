@@ -16,14 +16,28 @@ if(!Login::Logado()){
 		$carrinho = new Carrinho();
 
 
+		$ref_cod_pedido = date('YmdHms') . $_SESSION['CLI']['cli_id'];
+
+
+		if(!isset($_SESSION['PED']['pedido'])){
+			$_SESSION['PED']['pedido'] = $ref_cod_pedido;
+		}
+
+			if(!isset($_SESSION['PED']['ref'])){
+				$_SESSION['PED']['ref'] = $ref_cod_pedido;
+			}
+
+
+
 	$smarty->assign('PRO', $carrinho->GetCarrinho());
 	$smarty->assign('TOTAL', Sistema::MoedaBR($carrinho->GetTotal()));
 	$smarty->assign('TEMA', Rotas::get_SiteTEMA());
 	
 		$pedido = new Pedidos();
 		$cliente = 1;
-		$cod = $_SESSION['pedido'];
-		$ref = '4655524ref';
+		$cod = $_SESSION['PED']['pedido'];
+		$ref = $_SESSION['PED']['ref'];
+		
 
 			if($pedido->PedidoGravar($cliente, $cod, $ref)){
 			$pedido->LimparSessoes();
