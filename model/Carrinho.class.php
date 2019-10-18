@@ -10,6 +10,12 @@ Class Carrinho{
 		foreach ($_SESSION['PRO'] as $lista){
 			$sub = ($lista['VALOR_US'] * $lista['QTD']);
 			$this->total_valor += $sub;
+
+			/*$peso = $List['PESO'] * $lista['QTD'];
+			$this->total_peso += $peso;*/
+
+
+
 			$this->itens[$i] = array(
 
 			'pro_id' => $lista['ID'],

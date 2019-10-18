@@ -8,6 +8,7 @@ Class Config{
 	const SITE_NOME = "Just Cash";
 	const SITE_EMAIL_ADM = "justcashsuporte@gamil.com";
 	const BD_LIMIT_POR_PAG = 6;
+	const SITE_CEP = '57100000';
 
 
 	//INFORMAÇÕES DO BANCO DE DADOS
