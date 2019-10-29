@@ -1,46 +1,9 @@
-<script>
-$(document).ready(function(){    
 
-   // validar frete
-     $('#buscar_frete').click(function(){  
-        
-      var CEP_CLIENTE = $('#cep_frete').val();
-      var PESO_FRETE = $('#peso_frete').val();
-       
-        if (CEP_CLIENTE.length !== 8 ) {
-        alert('Digite seu CEP corretamente, 8 dígitos e sem traço ou ponto');  
-         $('#frete').addClass(' text-center text-danger');
-         $('#frete').html('<b>Digite seu CEP corretamente, 8 dígitos e sem traço ou ponto</b>');
-        $('#cep_frete').focus();
-        } else {
-
-        $('#frete').html('<center><img width="50" height="50" src="view/images/spinner.gif"> <b>Carregando...</b></center>');
-        $('#frete').addClass(' text-center text-danger');
-      
-        // carrego o combo com os bairros
-       
-        $('#frete').load('controller/frete.php?cepcliente='+CEP_CLIENTE+'&pesofrete='+PESO_FRETE);
- 
- } // fim do IF digitei o CEP
-      
- 
-    }); // fim do change
-    
-   
-} ); // fim do ready
-
-</script>
-
-
-</script>
-
-<h3>Meu Carrinho</h3>
-<hr>
 <!-- botoes e opções de cima -->
 <section class="row">
     
-    <div class="col-md-4 ">
-        
+    <div class="col-md-12 " align="right">
+        <a href="{$PAG_PRODUTOS}" class="btn btn-info" title="">Comprar Mais</a>
     </div>
     <div class="col-md-4">
         
@@ -57,14 +20,14 @@ $(document).ready(function(){
    
     <center>
     <table class="table table-bordered" style="width: 95%">
+
+<!--
+        <tr> 
+        
+            
+            <td colspan="6" align="right"><a href="" class="btn btn-success" title="">Comprar Mais</a></td> 
+        </tr> -->
        
-        <tr>
-            <td  colspan="6" align="right">
-                <a href="{$PAG_PRODUTOS}" class="btn btn-info" title="">Comprar Mais</a>
-            </td>
-        </tr>
-
-
         <tr class="text-danger bg-danger">
             <td></td> 
             <td>Produto</td> 
@@ -75,15 +38,16 @@ $(document).ready(function(){
             
         </tr>
      
-        {foreach from=$PRO item=P}      
+        
+       {foreach from=$PRO item=P}
         
         <tr>
             
-            <td> <img src="{$P.pro_img}" alt="{$P.pro_nome} "> </td>
-            <td> {$P.pro_nome} </td>
-            <td> {$P.pro_valor} </td>
+            <td> <img src="{$P.pro_img}" alt="{$P.pro_nome}"> </td>
+            <td>  {$P.pro_nome} </td>
+            <td>  {$P.pro_valor} </td>
             <td> {$P.pro_qtd}  </td>
-            <td> {$P.pro_subTotal} </td>
+            <td>  {$P.pro_subTotal} </td>
             <td> 
                 <form name="carrinho_dell" method="post" action="{$PAG_CARRINHO_ALTERAR}">
                   
@@ -106,6 +70,44 @@ $(document).ready(function(){
            
 </section><!-- fim da listagem itens -->
         
+        
+
+        <!--  bloco frete -->
+        <div class="row">
+          <div class="col-md-4"></div>
+          <div class="col-md-4"></div>
+      <div class="col-md-4">
+           <form  method="post"> 
+      <div class="form-group">
+        <select required class="form-control" name="servico" >
+         <option value="">Selecione o tipo de envio</option>
+         <option value="SEDEX">SEDEX</option>
+      <option value="PAC">PAC</option>
+        </select>
+       </div>
+        
+      <!-- Input peso -->
+      <input type="hidden" name="peso_frete" id="peso_frete" value="1" class="form-control " readonly>
+        
+      <!-- Input onde é digitado o CEP -->
+      <div class="form-group">
+          <input type="text" class="form-control" name="destino" id="cep_frete"  placeholder="digite seu cep" required>
+
+      </div>
+      {if $VALOR_FRETE > 0}
+      <div class="text-center" style="margin-bottom: 15px;">
+      <!-- Valor e prazo do frete -->
+      <p>{$SERVICO} <span>{$REAL}{$VALOR_FRETE} - {$PRAZO}</p>
+      {/if}
+      <!-- Botão que envia as informações -->
+      <button class="btn btn-geral btn-block" id="buscar_frete"> <i class="glyphicon glyphicon-send"></i> Calcular Frete </button>  
+    
+      </div>
+      </form>
+</div>
+
+          <br><hr>
+
         <!-- botoes de baixo e valor total -->
         <section class="row" id="total">
                       
@@ -115,12 +117,12 @@ $(document).ready(function(){
             
             <div class="col-md-4 text-right text-danger bg-warning">
             <h4>
-               Total : R$ {$TOTAL}
+               Total : R$ {$TOTAL_COM_FRETE}
             </h4>
             </div>
             
             <!-- botão de limpar-->
-            <div class="col-md-4">
+            <div class="col-md-4 ">
 
                 <form name="limpar" method="post" action="{$PAG_CARRINHO_ALTERAR}">
                     <input type="hidden" name="acao" value="limpar">
@@ -130,58 +132,23 @@ $(document).ready(function(){
                     <br>
 
                 </form>
-
-                    <!-- botão finalzar -->
                     <form name="pedido_confirmar" id="pedido_confirmar" method="post" action="{$PAG_CONFIRMAR}">
-                         <button class="btn btn-success btn-block" type="submit">  
-                            <i class="glyphicon glyphicon-ok"></i> Confirmar Pedido </button>
-                            <span id="frete"></span>
-                    </form>
+
+                     <input type="hidden" name="frete_radio" id="frete_radio" value="2">
+                     
+                     <button class="btn btn-success btn-block" type="submit">  <i class="glyphicon glyphicon-ok"></i> Confirmar Pedido </button>
+
+
+
+                 </form>
 
             </div>
 
-
-                
         </section>
-         
-                    <br>
-            
-            <hr>
-
-             <!--  bloco frete -->
-               <section class="row" id="dadosfrete">
-     
-                <div class="col-md-4"></div>
-                    <div class="col-md-4">
-                        <!-- Mostra essa parte só quando o valor do frete é maior que 0 -->
-                                
-                            <!-- Input peso -->
-                            <input type="hidden" name="peso_frete" id="peso_frete" value="2" class="form-control " readonly>
-                                
-                            <!-- Input onde é digitado o CEP -->
-                            <div class="form-group">
-                            <input type="text" class="form-control" name="destino" id="cep_frete"  placeholder="digite seu cep" required>
-
-                            </div>
-                            <!-- Botão que envia as informações -->
-
-                            <button class="btn btn-geral btn-block" id="buscar_frete"> <i class="glyphicon glyphicon-send"></i> Calcular Frete </button>    
-                        
-                    </div>
-            </form>
-                                
-                                                        
-                 </section>
-        
-            <hr>
-        <br>
-       
+                <br>    
+           <hr>        
        </form>  
-       
-       </div>
-       
-                   
-                        
+       </div>        
   </section>
        <br>
        <br>

@@ -36,16 +36,18 @@ class Sistema {
        // 500.99   500,99    1500.99  1.500,99
         return number_format($valor,2,",",".");  
     }
+
+    
      /**
      * 
      * @param string pega data americana e deixa em BR
      * @return string
      */
     public static function Fdata($data){
-	   // 2017-04-23 23/04/2017
-	  $data_correta = explode("-",$data);
-	  $data = $data_correta[2]."/". $data_correta[1] ."/".$data_correta[0];  
-	  return $data;   
+     // 2017-04-23 23/04/2017
+    $data_correta = explode("-",$data);
+    $data = $data_correta[2]."/". $data_correta[1] ."/".$data_correta[0];  
+    return $data;   
     }
     
                    
@@ -55,28 +57,28 @@ class Sistema {
     * @return string: senha randonica
     */
     static function GerarSenha(){
-		//2	  // fe45214qa  mqws23ma  0o z b
+    //2   // fe45214qa  mqws23ma  0o z b
         $tamanho = 1;
-	$string ="";
-			
-	for ($i = 0; $i < $tamanho; $i++) {
-				
-		 //$string .= (rand(1, 9)) ;
-				   $string .= chr(rand(109, 122));
+  $string ="";
+      
+  for ($i = 0; $i < $tamanho; $i++) {
+        
+     //$string .= (rand(1, 9)) ;
+           $string .= chr(rand(109, 122));
                                    $string .= rand(40, 99);
                                    $string .= chr(rand(109, 122));
                                    $string .= rand(20, 89);
                                    $string .= chr(rand(109, 122));
                                    $string .= chr(rand(109, 122));
                                    //$string .= rand(20, 89);
-                                   //$string .= rand(20, 89);		  
-			}
-			$string = str_replace('o', 'z', $string);
-			$string = str_replace('0', 'b', $string);
-			
-			return $string;
-			
-	} 
+                                   //$string .= rand(20, 89);     
+      }
+      $string = str_replace('o', 'z', $string);
+      $string = str_replace('0', 'b', $string);
+      
+      return $string;
+      
+  } 
         
         
         
@@ -88,8 +90,8 @@ class Sistema {
      */    
     static function ValidarCPF($cpf = false) {    
       // determina um valor inicial para o digito $d1 e $d2
-	$d1 = 0;
-	$d2 = 0;
+  $d1 = 0;
+  $d2 = 0;
             // remove tudo que não seja número
             $cpf = preg_replace("/[^0-9]/", "", $cpf);
             // lista de cpf inválidos que serão ignorados
@@ -201,6 +203,12 @@ class Sistema {
         
         return hash('SHA512', $valor);
         
+    }
+
+    static function moedaPhp($str_num){
+    $resultado = str_replace('.', '', $str_num);
+    $resultado = str_replace(',', '.', $resultado);
+    return $resultado;
     }
      
      
